@@ -2,176 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Name - Portfolio</title>
+  <title>Gentha Wibhi Miasa – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      color: #222;
-      background: #f5f5f5;
-    }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0 0 0.5rem;
-      font-size: 2rem;
-    }
-    header p {
-      margin: 0.2rem 0;
-      opacity: 0.9;
-    }
-    nav {
-      background: #ffffff;
-      border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0.5rem 1.5rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-    section {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 1.4rem;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-    .project-card {
-      border: 1px solid #eee;
-      border-radius: 6px;
-      padding: 1rem;
-    }
-    .project-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-    }
-    .project-card p {
-      margin: 0 0 0.5rem;
-      font-size: 0.95rem;
-    }
-    .project-card a {
-      font-size: 0.9rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #666;
-      padding: 1.5rem 0;
-    }
-  </style>
+  <meta name="description" content="Portfolio of Gentha Wibhi Miasa – Computer Science, Machine Learning, and Formal Methods." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-    <p>Computer Science | Machine Learning | Formal Methods</p>
-    <p>Melbourne, Australia</p>
+  <header class="site-header">
+    <div class="container header-content">
+      <div>
+        <h1 class="site-title">Gentha Wibhi Miasa</h1>
+        <p class="site-subtitle">Computer Science · Machine Learning · Formal Methods</p>
+        <p class="site-location">Melbourne, Australia</p>
+      </div>
+      <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <section id="about">
+  <main class="container">
+    <!-- About -->
+    <section id="about" class="card">
       <h2>About Me</h2>
       <p>
-        Short intro about you: what you study/work on, your main interests (e.g.,
-        LLM-based program specification generation, formal verification with Dafny,
-        and machine learning for health using MIMIC-IV).
+        I am a computer science graduate with experience in large language models, formal verification (Dafny),
+        and machine learning for health using datasets such as MIMIC-IV. I enjoy building tools and research
+        pipelines that connect theory with practical applications.
       </p>
     </section>
 
-    <section id="projects">
+    <!-- Projects -->
+    <section id="projects" class="card">
       <h2>Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>Formal Specifications from Python Programs</h3>
-          <p>
-            Research project exploring automated transformations of Python code
-            to generate verifiable Dafny specifications using LLMs.
-          </p>
-          <a href="https://github.com/your-username/your-repo" target="_blank">View on GitHub</a>
-        </div>
 
-        <div class="project-card">
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>LLM-based Program Specification Generation</h3>
+          <p>
+            Research pipeline that transforms real-world Python programs and uses LLMs to generate verifiable
+            Dafny specifications. Includes dataset curation, transformation, and automated verification analysis.
+          </p>
+          <p class="project-tags">LLM · Formal Methods · Dafny · Python</p>
+          <a class="project-link" href="https://github.com/your-username/your-spec-repo" target="_blank">
+            View repository
+          </a>
+        </article>
+
+        <article class="project-card">
           <h3>Early AKI Prediction in ICU</h3>
           <p>
-            Machine learning models using the MIMIC-IV dataset to predict acute
-            kidney injury within the first hours of ICU admission.
+            Machine learning models to predict acute kidney injury using ICU time-series data (MIMIC-IV),
+            evaluating linear models and tree-based methods with calibration analysis.
           </p>
-          <a href="#" target="_blank">Paper / Repo link</a>
-        </div>
+          <p class="project-tags">MIMIC-IV · Clinical ML · Python</p>
+          <a class="project-link" href="https://github.com/your-username/your-aki-repo" target="_blank">
+            View repository
+          </a>
+        </article>
 
-        <!-- Add more project-card blocks as needed -->
+        <!-- Add more project-card blocks as you like -->
       </div>
     </section>
 
-    <section id="experience">
+    <!-- Skills -->
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div>
+          <h3>Programming</h3>
+          <ul>
+            <li>Python (data, scripting, pipelines)</li>
+            <li>JavaScript (basic front-end, React in progress)</li>
+            <li>Dafny (formal specifications & verification)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Machine Learning</h3>
+          <ul>
+            <li>Scikit-learn, XGBoost, basic deep learning</li>
+            <li>Model evaluation (ROC, PR, calibration)</li>
+            <li>Working with clinical datasets (MIMIC-IV)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools & Workflow</h3>
+          <ul>
+            <li>Git & GitHub</li>
+            <li>VS Code</li>
+            <li>Overleaf, LaTeX</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="card">
       <h2>Experience & Education</h2>
-      <ul>
-        <li>Master / Honours / Research Project in Computer Science, University of Melbourne</li>
-        <li>Research focus: LLMs, formal verification, and clinical ML</li>
-        <li>Other internships / roles you want to highlight</li>
+      <ul class="timeline">
+        <li>
+          <h3>Computer Science Research Project – University of Melbourne</h3>
+          <p class="timeline-meta">Focus: LLMs, formal verification, and program transformation</p>
+        </li>
+        <li>
+          <h3>Machine Learning for Health Coursework & Projects</h3>
+          <p class="timeline-meta">Clinical prediction models using ICU data (e.g., AKI prediction)</p>
+        </li>
+        <!-- Add more experience entries here -->
       </ul>
     </section>
 
-    <section id="contact">
+    <!-- Contact -->
+    <section id="contact" class="card">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
-      <p>LinkedIn: <a href="#" target="_blank">Your LinkedIn</a></p>
+      <p>If you’d like to collaborate or talk about research and front-end development, feel free to reach out.</p>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
+        <li>GitHub: <a href="https://github.com/wibhi-miasa" target="_blank">github.com/wibhi-miasa</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com" target="_blank">Your LinkedIn profile</a></li>
+      </ul>
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> Your Name
+  <footer class="site-footer">
+    <div class="container">
+      © <span id="year"></span> Gentha Wibhi Miasa
+    </div>
   </footer>
 
-  <script>
-    // Set current year automatically
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
