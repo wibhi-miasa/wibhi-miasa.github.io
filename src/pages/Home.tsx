@@ -9,14 +9,13 @@ export default function Home() {
       <section className="min-h-[80vh] flex items-center">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <p className="text-sm text-neutral-500 mb-4 tracking-wide">
-            I'm {personalInfo.name.split(' ')[0]},
+            I'm {personalInfo.name.split(' ')[1]},
           </p>
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-neutral-100 max-w-3xl mb-6">
-            computer science graduate and builder of intelligent systems.
+            Designing intuitive digital experiences that turn complex technology into meaningful human solutions.
           </h1>
           <p className="text-neutral-400 max-w-xl text-lg leading-relaxed mb-8">
-            I'm passionate about understanding how different areas of CS intersect —
-            from formal verification to machine learning — to create meaningful connections and solutions.
+            I’m a UX designer with a background in computer science, focused on transforming ideas into meaningful products. Through research, user journey mapping, and iterative design, I build experiences that solve real problems.
           </p>
           <div className="flex gap-4">
             <Link
@@ -40,7 +39,7 @@ export default function Home() {
       {/* Projects */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
         <div className="border-t border-neutral-800/50 pt-4 mb-8">
-          <h2 className="text-xs uppercase tracking-widest text-neutral-500">Selected Projects</h2>
+          <h2 className="text-xs uppercase tracking-widest text-neutral-500">Projects</h2>
         </div>
 
         {projects.map((project, index) => (
