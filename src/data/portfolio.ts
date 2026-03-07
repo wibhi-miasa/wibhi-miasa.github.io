@@ -92,8 +92,10 @@ export const personalInfo = {
   email: 'you@example.com',
   github: 'https://github.com/wibhi-miasa',
   linkedin: 'https://www.linkedin.com',
-  bio: `I am a computer science graduate with experience in large language models, formal verification (Dafny), and machine learning for health using datasets such as MIMIC-IV. I enjoy building tools and research pipelines that connect theory with practical applications.`,
-  aboutExtended: `During my time at the University of Melbourne, I've had the opportunity to work on cutting-edge research combining AI with formal methods. These experiences allowed me to see how theory meets practice, collaborating with talented researchers and contributing to real-world projects. I learned invaluable lessons about the research process, from concept development to final analysis.
+  bio: `I’m a Master of Computer Science graduate from the University of Melbourne with a strong interest in UI/UX design and human–computer interaction. I enjoy designing digital products that translate complex problems into intuitive and accessible user experiences.`,
+  aboutExtended: `Through hackathons and product design competitions, I’ve worked on projects ranging from child health tracking apps and financial planning tools to early dyslexia screening games and interactive product websites. These experiences have allowed me to practice user research, user journey mapping, design iteration, and high-fidelity prototyping using Figma.
 
-I thrive in collaborative environments, where ideas can bounce and evolve. I love the challenge of taking a concept and translating it into a working system. Whether I'm writing Python pipelines, building ML models, or developing web applications, I'm always searching for ways to create meaningful impact through my work.`,
+I’m particularly interested in human-centered design, where technology, research, and thoughtful design come together to create meaningful solutions. My background in computer science also helps me bridge the gap between design thinking and technical implementation.
+
+I’m currently looking for opportunities in UI/UX design, product design, or interaction design, where I can contribute to building thoughtful digital products and continue learning from experienced teams.`,
 }

@@ -32,6 +32,14 @@ export default function Layout() {
               Home
             </NavLink>
             <NavLink
+              to="/projects"
+              className={({ isActive }) =>
+                `text-sm transition-colors ${isActive ? 'text-white' : 'text-neutral-400 hover:text-neutral-200'}`
+              }
+            >
+              Projects
+            </NavLink>
+            <NavLink
               to="/about"
               className={({ isActive }) =>
                 `text-sm transition-colors ${isActive ? 'text-white' : 'text-neutral-400 hover:text-neutral-200'}`
