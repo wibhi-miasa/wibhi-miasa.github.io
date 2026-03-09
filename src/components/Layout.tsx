@@ -16,9 +16,9 @@ export default function Layout() {
       <ScrollToTop />
 
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800/50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200">
         <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="text-lg font-medium tracking-tight hover:text-neutral-300 transition-colors">
+          <Link to="/" className="text-lg font-medium tracking-tight text-neutral-900 hover:text-neutral-600 transition-colors">
             {personalInfo.name}
           </Link>
           <div className="flex items-center gap-8">
@@ -26,7 +26,7 @@ export default function Layout() {
               to="/"
               end
               className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-white' : 'text-neutral-400 hover:text-neutral-200'}`
+                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
               }
             >
               Home
@@ -34,7 +34,7 @@ export default function Layout() {
             <NavLink
               to="/projects"
               className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-white' : 'text-neutral-400 hover:text-neutral-200'}`
+                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
               }
             >
               Projects
@@ -42,14 +42,14 @@ export default function Layout() {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-white' : 'text-neutral-400 hover:text-neutral-200'}`
+                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
               }
             >
               About
             </NavLink>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+              className="text-sm text-neutral-500 hover:text-neutral-800 transition-colors"
             >
               Contact
             </a>
@@ -63,21 +63,21 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-800/50">
+      <footer className="border-t border-neutral-200">
         <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row justify-between gap-8">
             <div>
-              <p className="text-sm text-neutral-400 mb-4">
+              <p className="text-sm text-neutral-500 mb-4">
                 I'm dedicated to building meaningful systems through a multidisciplinary approach to computer science.
               </p>
-              <Link to="/about" className="text-sm text-neutral-300 hover:text-white transition-colors underline underline-offset-4">
+              <Link to="/about" className="text-sm text-neutral-700 hover:text-neutral-900 transition-colors underline underline-offset-4">
                 Discover my skills and passions
               </Link>
             </div>
             <div className="flex gap-6 text-sm">
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="text-neutral-500 hover:text-neutral-900 transition-colors"
               >
                 Email
               </a>
@@ -85,7 +85,7 @@ export default function Layout() {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="text-neutral-500 hover:text-neutral-900 transition-colors"
               >
                 GitHub
               </a>
@@ -93,13 +93,13 @@ export default function Layout() {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="text-neutral-500 hover:text-neutral-900 transition-colors"
               >
                 LinkedIn
               </a>
             </div>
           </div>
-          <p className="text-xs text-neutral-600 mt-8">
+          <p className="text-xs text-neutral-400 mt-8">
             &copy; {new Date().getFullYear()} {personalInfo.name}. All Rights Reserved.
           </p>
         </div>
