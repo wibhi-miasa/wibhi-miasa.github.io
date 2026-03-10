@@ -34,7 +34,7 @@ export default function About() {
       </section>
 
       {/* Right now section */}
-      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-neutral-200">
+      {/* <section className="max-w-6xl mx-auto px-6 py-16 border-t border-neutral-200">
         <h2 className="text-xs uppercase tracking-widest text-neutral-400 mb-8">Right now I am...</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div>
@@ -54,7 +54,7 @@ export default function About() {
             <p className="text-sm text-neutral-700">This portfolio website</p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Skills */}
       <section className="max-w-6xl mx-auto px-6 py-16 border-t border-neutral-200">
