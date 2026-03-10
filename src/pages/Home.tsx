@@ -10,13 +10,13 @@ export default function Home() {
       <section className="min-h-[80vh] flex items-center">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <p className="text-sm text-neutral-400 mb-4 tracking-wide">
-            I'm {personalInfo.name.split(' ')[1]},
+            Hi, I'm {personalInfo.name.split(' ')[1]},
           </p>
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-neutral-900 max-w-3xl mb-6">
-            Designing intuitive digital experiences that turn complex technology into meaningful human solutions.
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-neutral-900 max-w-4xl mb-6">
+            Designing digital products that turn complex ideas into simple user experiences.
           </h1>
           <p className="text-neutral-500 max-w-xl text-lg leading-relaxed mb-8">
-            I’m a UX designer with a background in computer science, focused on transforming ideas into meaningful products. Through research, user journey mapping, and iterative design, I build experiences that solve real problems.
+           I’m a UX designer with a computer science background, focused on creating practical solutions through research, user journeys, and iterative design.
           </p>
           <div className="flex gap-4">
             <Link

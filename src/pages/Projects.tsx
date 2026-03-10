@@ -7,7 +7,7 @@ export default function Projects() {
       <section className="max-w-6xl mx-auto px-6 pt-20 pb-16">
         <h1 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-4">Projects</h1>
         <p className="text-neutral-500 text-lg max-w-2xl mb-12">
-          A selection of research and engineering work spanning formal methods, machine learning, and software development.
+          A selection of projects exploring how design and technology can improve everyday experiences.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
