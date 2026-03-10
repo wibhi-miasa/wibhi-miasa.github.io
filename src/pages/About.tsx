@@ -61,25 +61,25 @@ export default function About() {
         <h2 className="text-xs uppercase tracking-widest text-neutral-400 mb-8">Skills</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-sm font-medium text-neutral-700 mb-4">Programming</h3>
+            <h3 className="text-sm font-medium text-neutral-700 mb-4">Design</h3>
             <ul className="space-y-2">
-              {skills.programming.map((skill) => (
+              {skills.design.map((skill) => (
                 <li key={skill} className="text-sm text-neutral-500">{skill}</li>
               ))}
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-neutral-700 mb-4">Machine Learning</h3>
-            <ul className="space-y-2">
-              {skills.ml.map((skill) => (
-                <li key={skill} className="text-sm text-neutral-500">{skill}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-medium text-neutral-700 mb-4">Tools & Workflow</h3>
+            <h3 className="text-sm font-medium text-neutral-700 mb-4">Tools</h3>
             <ul className="space-y-2">
               {skills.tools.map((skill) => (
+                <li key={skill} className="text-sm text-neutral-500">{skill}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-neutral-700 mb-4">Technical</h3>
+            <ul className="space-y-2">
+              {skills.technical.map((skill) => (
                 <li key={skill} className="text-sm text-neutral-500">{skill}</li>
               ))}
             </ul>

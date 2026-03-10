@@ -1,7 +1,27 @@
 export const skills = {
-  programming: ['Python', 'JavaScript / TypeScript', 'Dafny', 'React', 'Tailwind CSS'],
-  ml: ['Scikit-learn', 'XGBoost', 'Deep Learning', 'Model Evaluation', 'MIMIC-IV'],
-  tools: ['Git & GitHub', 'VS Code', 'LaTeX / Overleaf', 'Linux CLI'],
+  design: [
+    'UX Design',
+    'User Research',
+    'User Journey Mapping',
+    'Wireframing',
+    'Interaction Design',
+    'Prototyping'
+  ],
+
+  tools: [
+    'Figma',
+    'FigJam',
+    'React',
+    'Tailwind CSS',
+    'Git & GitHub'
+  ],
+
+  technical: [
+    'JavaScript / TypeScript',
+    'Python',
+    'Frontend Development',
+    'Responsive Design'
+  ],
 }
 
 export const experience = [
@@ -19,15 +39,17 @@ export const experience = [
 
 export const personalInfo = {
   name: 'Gentha Wibhi Miasa',
-  role: 'Computer Science · Machine Learning · Formal Methods',
+  role: 'UX Designer · Computer Science Graduate',
   location: 'Melbourne, Australia',
-  email: 'you@example.com',
+  email: 'wibhimiasa@gmail.com',
   github: 'https://github.com/wibhi-miasa',
-  linkedin: 'https://www.linkedin.com',
-  bio: `I’m a Master of Computer Science graduate from the University of Melbourne with a strong interest in UI/UX design and human–computer interaction. I enjoy designing digital products that translate complex problems into intuitive and accessible user experiences.`,
-  aboutExtended: `Through hackathons and product design competitions, I’ve worked on projects ranging from child health tracking apps and financial planning tools to early dyslexia screening games and interactive product websites. These experiences have allowed me to practice user research, user journey mapping, design iteration, and high-fidelity prototyping using Figma.
+  linkedin: 'www.linkedin.com/in/wibhimiasa',
+  bio: `I'm a UX designer with a background in computer science, interested in turning complex ideas into simple and intuitive digital experiences.`,
+  aboutExtended: `My interest in UX started from a simple curiosity: technology can be powerful, but if people struggle to use it, its impact becomes limited. I enjoy exploring how design can make digital products clearer, more intuitive, and easier to interact with.
 
-I’m particularly interested in human-centered design, where technology, research, and thoughtful design come together to create meaningful solutions. My background in computer science also helps me bridge the gap between design thinking and technical implementation.
+Through hackathons and product design projects, I've worked on ideas ranging from a child health tracking app and an AI-assisted financial planner to an early dyslexia screening game and an interactive smart-glasses website. These experiences helped me practice user research, journey mapping, design iteration, and high-fidelity prototyping using Figma.
 
-I’m currently looking for opportunities in UI/UX design, product design, or interaction design, where I can contribute to building thoughtful digital products and continue learning from experienced teams.`,
+Having a computer science background also helps me see design from both sides. I enjoy thinking about how a product should feel for users, while also understanding how it might be built and implemented.
+
+Right now, I'm looking for opportunities in UX, product, or interaction design where I can contribute to building useful digital products and continue learning from experienced teams.`,
 }
