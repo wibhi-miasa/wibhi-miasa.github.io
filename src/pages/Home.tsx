@@ -43,9 +43,21 @@ export default function Home() {
           <h2 className="text-xs uppercase tracking-widest text-neutral-400">Projects</h2>
         </div>
 
-        {projects.map((project, index) => (
+        {projects.slice(0, 3).map((project, index) => (
           <ProjectCard key={project.slug} project={project} index={index} />
         ))}
+
+        <div className="mt-12 text-center">
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 text-sm px-6 py-3 border border-neutral-300 rounded-full text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-all"
+          >
+            View all projects
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
+        </div>
       </section>
 
       {/* CTA */}
