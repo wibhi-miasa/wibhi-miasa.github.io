@@ -43,7 +43,7 @@ export const personalInfo = {
   location: 'Melbourne, Australia',
   email: 'wibhimiasa@gmail.com',
   github: 'https://github.com/wibhi-miasa',
-  linkedin: 'www.linkedin.com/in/wibhimiasa',
+  linkedin: 'https://www.linkedin.com/in/wibhimiasa',
   bio: `I'm a UX designer with a background in computer science, interested in turning complex ideas into simple and intuitive digital experiences.`,
   aboutExtended: `My interest in UX started from a simple curiosity: technology can be powerful, but if people struggle to use it, its impact becomes limited. I enjoy exploring how design can make digital products clearer, more intuitive, and easier to interact with.
 
