@@ -2,7 +2,7 @@
 slug: lexi-dyslexia-screening
 category: UX Design
 title: Lexi
-subtitle: Early Dyslexia Screening Educational Game
+subtitle: Turning early dyslexia screening into a playful web game for children aged 4–6.
 description: A web-based educational game designed to help identify early signs of dyslexia in children aged 4–6 through interactive learning tasks.
 image: /images/project-lexi.jpg
 tags:

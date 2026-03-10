@@ -2,7 +2,7 @@
 slug: wellsave-financial-planning
 category: UX Design
 title: WellSave
-subtitle: AI-Based Financial Planning Platform
+subtitle: Helping women manage family finances through an AI-assisted financial planning platform.
 description: A financial planning platform designed to help women manage family finances through AI-based financial planning and social saving features.
 image: /images/project-wellsave.jpg
 tags:

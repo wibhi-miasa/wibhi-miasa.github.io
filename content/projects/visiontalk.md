@@ -2,7 +2,7 @@
 slug: visiontalk-smart-glasses
 category: UX Design
 title: VisionTalk
-subtitle: Smart Glasses Product Discovery Website
+subtitle: Creating an immersive product exploration experience for smart glasses using interactive web design.
 description: An interactive product website designed to showcase smart glasses through immersive product exploration and customizable shopping UI.
 image: /images/project-visiontalk.jpg
 tags:
