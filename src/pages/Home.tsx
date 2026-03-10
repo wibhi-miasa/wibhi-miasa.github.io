@@ -67,7 +67,7 @@ export default function Home() {
             Let's collaborate
           </h2>
           <p className="text-neutral-400 mb-8 max-w-md mx-auto">
-            If you'd like to discuss research, machine learning, or software engineering — feel free to reach out.
+            If you're interested in UX design, product ideas, or building thoughtful digital experiences, I'd love to connect and chat.
           </p>
           <a
             href={`mailto:${personalInfo.email}`}
