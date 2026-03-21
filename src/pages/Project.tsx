@@ -71,14 +71,14 @@ export default function Project() {
           ))}
         </div>
 
-        {project.repoUrl && (
+        {project.ctaUrl && (
           <a
-            href={project.repoUrl}
+            href={project.ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-sm px-5 py-2.5 bg-neutral-900 text-white rounded-full hover:bg-neutral-700 transition-all font-medium"
           >
-            View repository
+            {project.ctaLabel || 'View project'}
           </a>
         )}
       </section>

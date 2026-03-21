@@ -7,6 +7,9 @@ export interface ProjectItem {
   image: string
   tags: string[]
   repoUrl?: string
+  prototypeUrl?: string
+  ctaLabel?: string
+  ctaUrl?: string
   order: number
   body: string
 }
@@ -79,6 +82,9 @@ function loadProjects(): ProjectItem[] {
       image: data.image as string,
       tags: (data.tags as string[]) ?? [],
       repoUrl: data.repoUrl as string | undefined,
+      prototypeUrl: data.prototypeUrl as string | undefined,
+      ctaLabel: data.ctaLabel as string | undefined,
+      ctaUrl: (data.ctaUrl || data.prototypeUrl || data.repoUrl) as string | undefined,
       order: (data.order as number) ?? 999,
       body: content,
     })

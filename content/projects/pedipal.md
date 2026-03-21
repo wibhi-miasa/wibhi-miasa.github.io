@@ -10,7 +10,8 @@ tags:
   - Healthcare
   - Mobile App
   - Figma
-repoUrl: https://github.com/wibhi-miasa
+prototypeUrl: https://your-figma-link-here
+ctaLabel: View Figma Prototype
 order: 1
 ---
 

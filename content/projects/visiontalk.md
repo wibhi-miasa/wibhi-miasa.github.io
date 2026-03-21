@@ -10,7 +10,8 @@ tags:
   - Web Design
   - Interaction Design
   - E-commerce
-repoUrl: https://github.com/wibhi-miasa
+ctaUrl: https://your-website-link-here
+ctaLabel: View Live Demo
 order: 2
 ---
 
