@@ -13,6 +13,10 @@ tags:
   - AR
 prototypeUrl: https://www.figma.com/proto/OfwBsPOCkLJH81ClxXtNCc/Design-Concept?page-id=2%3A2&node-id=194-463&p=f&viewport=-9059%2C314%2C0.36&t=m8Zxv58bNMC4iHKc-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=194%3A463
 ctaLabel: View Figma Prototype
+timeline: 2024
+team: 4 members
+role: UX Research & Design
+tools: Figma, FigJam
 order: 1
 ---
 

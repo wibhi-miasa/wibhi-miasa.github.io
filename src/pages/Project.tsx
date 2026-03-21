@@ -81,6 +81,35 @@ export default function Project() {
             {project.ctaLabel || 'View project'}
           </a>
         )}
+
+        {(project.timeline || project.team || project.role || project.tools) && (
+          <div className="mt-6 pt-4 border-t border-neutral-200 flex flex-wrap items-start gap-x-8 md:gap-x-2 gap-y-2 max-w-4xl">
+            {project.timeline && (
+              <div className="min-w-[110px]">
+                <p className="text-[11px] uppercase tracking-widest text-neutral-400 mb-0.5 leading-none">Timeline</p>
+                <p className="text-xs font-semibold text-neutral-900 leading-tight">{project.timeline}</p>
+              </div>
+            )}
+            {project.team && (
+              <div className="min-w-[110px]">
+                <p className="text-[11px] uppercase tracking-widest text-neutral-400 mb-0.5 leading-none">Team</p>
+                <p className="text-xs font-semibold text-neutral-900 leading-tight">{project.team}</p>
+              </div>
+            )}
+            {project.role && (
+              <div className="min-w-[200px]">
+                <p className="text-[11px] uppercase tracking-widest text-neutral-400 mb-0.5 leading-none">Role</p>
+                <p className="text-xs font-semibold text-neutral-900 leading-tight">{project.role}</p>
+              </div>
+            )}
+            {project.tools && (
+              <div className="min-w-[150px]">
+                <p className="text-[11px] uppercase tracking-widest text-neutral-400 mb-0.5 leading-none">Tools</p>
+                <p className="text-xs font-semibold text-neutral-900 leading-tight">{project.tools}</p>
+              </div>
+            )}
+          </div>
+        )}
       </section>
 
       {/* Hero image */}

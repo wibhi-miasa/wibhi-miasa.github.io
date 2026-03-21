@@ -6,6 +6,10 @@ export interface ProjectItem {
   description: string
   image: string
   tags: string[]
+  timeline?: string
+  team?: string
+  role?: string
+  tools?: string
   repoUrl?: string
   prototypeUrl?: string
   ctaLabel?: string
@@ -81,6 +85,10 @@ function loadProjects(): ProjectItem[] {
       description: data.description as string,
       image: data.image as string,
       tags: (data.tags as string[]) ?? [],
+      timeline: data.timeline as string | undefined,
+      team: data.team as string | undefined,
+      role: data.role as string | undefined,
+      tools: data.tools as string | undefined,
       repoUrl: data.repoUrl as string | undefined,
       prototypeUrl: data.prototypeUrl as string | undefined,
       ctaLabel: data.ctaLabel as string | undefined,
