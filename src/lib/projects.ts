@@ -5,6 +5,7 @@ export interface ProjectItem {
   subtitle: string
   description: string
   image: string
+  heroImages?: string[]
   tags: string[]
   timeline?: string
   team?: string
@@ -84,6 +85,7 @@ function loadProjects(): ProjectItem[] {
       subtitle: data.subtitle as string,
       description: data.description as string,
       image: data.image as string,
+      heroImages: data.heroImages as string[] | undefined,
       tags: (data.tags as string[]) ?? [],
       timeline: data.timeline as string | undefined,
       team: data.team as string | undefined,

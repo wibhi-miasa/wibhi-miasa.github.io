@@ -1,6 +1,14 @@
+import { useEffect, useMemo, useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { projects } from '../lib/projects'
+
+function normalizeAssetPath(path?: string): string {
+  if (!path) return ''
+  const normalized = path.replace(/\\/g, '/')
+  return normalized.startsWith('/') ? normalized : `/${normalized}`
+}
 
 /** Split markdown body into sections delimited by ## headings */
 function parseSections(body: string): { heading: string; text: string; image?: string; imageAlt?: string }[] {
@@ -28,12 +36,112 @@ function parseSections(body: string): { heading: string; text: string; image?: s
 export default function Project() {
   const { slug } = useParams<{ slug: string }>()
   const project = projects.find((p) => p.slug === slug)
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [snapPoints, setSnapPoints] = useState<number[]>([])
+  const [hasInteracted, setHasInteracted] = useState(false)
+  const [autoAdvanceCount, setAutoAdvanceCount] = useState(0)
 
   if (!project) {
     return <Navigate to="/" replace />
   }
 
   const sections = project.body ? parseSections(project.body) : []
+  const normalizedMainImage = normalizeAssetPath(project.image)
+  const hasCustomMainImage = !!normalizedMainImage && !normalizedMainImage.startsWith('/images/project-')
+  const heroImages = useMemo(() => {
+    if (project.heroImages && project.heroImages.length > 0) {
+      return project.heroImages.map((img) => normalizeAssetPath(img)).filter(Boolean)
+    }
+    return hasCustomMainImage ? [normalizedMainImage] : []
+  }, [project.heroImages, normalizedMainImage, hasCustomMainImage])
+
+  useEffect(() => {
+    setActiveSlide(0)
+  }, [slug])
+
+  const hasCarousel = heroImages.length > 0
+  const canSlide = heroImages.length > 1
+  const carouselImages = useMemo(
+    () => (canSlide ? [...heroImages, ...heroImages] : heroImages),
+    [heroImages, canSlide],
+  )
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'center',
+    loop: true,
+    containScroll: false,
+    dragFree: false,
+    skipSnaps: false,
+  })
+
+  const goPrev = () => {
+    if (!emblaApi) return
+    setHasInteracted(true)
+    emblaApi.scrollPrev()
+  }
+
+  const goNext = () => {
+    if (!emblaApi) return
+    setHasInteracted(true)
+    emblaApi.scrollNext()
+  }
+
+  const goTo = (index: number) => {
+    if (!emblaApi) return
+    setHasInteracted(true)
+    emblaApi.scrollTo(index)
+  }
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    const onSelect = () => {
+      const snap = emblaApi.selectedScrollSnap()
+      setActiveSlide(snap % heroImages.length)
+    }
+
+    const onInit = () => {
+      setSnapPoints(heroImages.map((_, index) => index))
+      onSelect()
+    }
+
+    const onPointerDown = () => {
+      setHasInteracted(true)
+    }
+
+    onInit()
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onInit)
+    emblaApi.on('pointerDown', onPointerDown)
+
+    return () => {
+      emblaApi.off('select', onSelect)
+      emblaApi.off('reInit', onInit)
+      emblaApi.off('pointerDown', onPointerDown)
+    }
+  }, [emblaApi, heroImages])
+
+  useEffect(() => {
+    setHasInteracted(false)
+    setAutoAdvanceCount(0)
+    setActiveSlide(0)
+  }, [slug])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    emblaApi.scrollTo(0, true)
+  }, [emblaApi, slug])
+
+  useEffect(() => {
+    if (!emblaApi || !canSlide || hasInteracted || autoAdvanceCount >= 2) return
+
+    const timer = setTimeout(() => {
+      emblaApi.scrollNext()
+      setAutoAdvanceCount((count) => count + 1)
+    }, 2800)
+
+    return () => clearTimeout(timer)
+  }, [emblaApi, canSlide, hasInteracted, autoAdvanceCount, activeSlide])
 
   return (
     <>
@@ -55,7 +163,7 @@ export default function Project() {
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-neutral-900 mb-4">
           {project.title}
         </h1>
-        <p className="text-lg text-neutral-500 max-w-2xl leading-relaxed mb-6">
+        <p className="text-lg text-neutral-500 max-w-2xl leading-relaxed text-justify mb-6">
           {project.description}
         </p>
 
@@ -114,16 +222,85 @@ export default function Project() {
 
       {/* Hero image */}
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        <div className="aspect-video rounded-lg bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center overflow-hidden">
-          {project.image && !project.image.includes('/images/project-') ? (
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        <div className="relative h-[380px] sm:h-[500px] md:h-[580px] overflow-hidden">
+          {hasCarousel ? (
+            <>
+              <div className="h-full overflow-hidden" ref={emblaRef}>
+                <div className="flex h-full items-end">
+                  {carouselImages.map((img, index) => {
+                    const realIndex = index % heroImages.length
+                    const isActive = realIndex === activeSlide
+
+                    return (
+                    <div
+                      key={`${img}-${index}`}
+                      className="h-full shrink-0 basis-[84%] sm:basis-[64%] md:basis-[38%] px-2 sm:px-3 md:px-4 flex items-end justify-center"
+                    >
+                      <img
+                        src={img}
+                        alt={`${project.title} screen ${realIndex + 1}`}
+                        className={`max-w-[260px] sm:max-w-[290px] rounded-[18px] sm:rounded-[22px] object-cover transition-all duration-300 ${
+                          isActive
+                            ? 'w-full h-[96%] sm:h-[98%] md:h-full opacity-100'
+                            : 'w-[86%] h-[80%] sm:h-[84%] md:h-[86%] opacity-70'
+                        }`}
+                      />
+                    </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {canSlide && (
+                <div
+                  className={`absolute top-3 right-3 text-[11px] px-2.5 py-1 rounded-full bg-white/80 border border-neutral-200 text-neutral-500 transition-opacity duration-500 ${
+                    hasInteracted ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                  }`}
+                >
+                  Drag to explore
+                </div>
+              )}
+
+              {canSlide && (
+                <>
+                  <button
+                    type="button"
+                    onClick={goPrev}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-neutral-200 text-neutral-700 hover:bg-white"
+                  >
+                    ←
+                  </button>
+                  <button
+                    type="button"
+                    onClick={goNext}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-neutral-200 text-neutral-700 hover:bg-white"
+                  >
+                    →
+                  </button>
+
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    {snapPoints.map((_, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        onClick={() => goTo(index)}
+                        aria-label={`Go to image ${index + 1}`}
+                        className={`w-2.5 h-2.5 rounded-full transition-colors ${index === activeSlide ? 'bg-neutral-700' : 'bg-neutral-300 hover:bg-neutral-400'}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
           ) : (
-            <div className="text-center p-8">
+            <div className="text-center p-8 h-full flex flex-col items-center justify-center">
               <div className="text-6xl mb-4 opacity-20">
                 {project.category === 'Research' ? '🔬' : '📊'}
               </div>
               <p className="text-sm text-neutral-400">{project.title}</p>
-              <p className="text-xs text-neutral-400 mt-2">Add your project image at {project.image}</p>
+              <p className="text-xs text-neutral-400 mt-2">Add heroImages in frontmatter for carousel</p>
             </div>
           )}
         </div>
@@ -136,34 +313,38 @@ export default function Project() {
             <div
               key={i}
               className={`grid grid-cols-1 md:grid-cols-2 gap-8 py-12 border-t border-neutral-200 ${
+                !section.image && section.heading.trim().toLowerCase() === 'overview' ? 'md:grid-cols-1' : 'md:grid-cols-2'
+              } ${
                 i % 2 !== 0 ? 'md:[direction:rtl]' : ''
               }`}
             >
               {/* Text side */}
               <div className={`flex flex-col justify-center ${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
                 <h3 className="font-serif text-2xl text-neutral-900 mb-4">{section.heading}</h3>
-                <div className="prose prose-neutral max-w-none prose-p:text-neutral-500 prose-p:leading-relaxed">
+                <div className="prose prose-neutral max-w-none prose-p:text-neutral-500 prose-p:leading-relaxed prose-p:text-justify">
                   <ReactMarkdown>{section.text}</ReactMarkdown>
                 </div>
               </div>
 
               {/* Image side */}
-              <div className={`${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
-                <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center overflow-hidden">
-                  {section.image ? (
-                    <img
-                      src={section.image}
-                      alt={section.imageAlt}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-center p-6">
-                      <p className="text-xs text-neutral-400">{section.heading}</p>
-                      <p className="text-xs text-neutral-300 mt-1">Add an image: ![alt](/images/your-image.jpg)</p>
-                    </div>
-                  )}
+              {!(section.heading.trim().toLowerCase() === 'overview' && !section.image) && (
+                <div className={`${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
+                  <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center overflow-hidden">
+                    {section.image ? (
+                      <img
+                        src={section.image}
+                        alt={section.imageAlt}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="text-center p-6">
+                        <p className="text-xs text-neutral-400">{section.heading}</p>
+                        <p className="text-xs text-neutral-300 mt-1">Add an image: ![alt](/images/your-image.jpg)</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </section>
