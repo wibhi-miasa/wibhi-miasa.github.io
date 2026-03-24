@@ -4,7 +4,7 @@ category: UX Design
 title: Pedipal
 subtitle: Helping parents manage children's health records, vaccinations, and development tracking through a centralized mobile app.
 description: A mobile health application designed to help parents track vaccinations, manage pediatric appointments, and monitor children's growth and development.
-image: /images/project-pedipal.jpg
+image: images\pedipal_thumbnails.png
 tags:
   - UX Design
   - Healthcare

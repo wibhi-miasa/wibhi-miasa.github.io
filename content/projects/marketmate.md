@@ -4,7 +4,7 @@ category: UX Design
 title: MarketMate
 subtitle: Helping visitors navigate and discover Queen Victoria Market through AR-powered wayfinding and a personalised recommender system.
 description: A mobile application designed to help visitors find stalls, plan personalised tours, and explore Queen Victoria Market using augmented reality navigation.
-image: /images/marketmate_homepage.png
+image: images\marketmate_thumbnails.png
 heroImages:
   - /images/marketmate_homepage.png
   - /images/marketmate_arnav.png
