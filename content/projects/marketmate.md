@@ -95,11 +95,13 @@ The design began with a user journey map to identify the key touchpoints across 
 
 We then created low-fidelity wireframes for all core screens, testing the information hierarchy and layout before committing to high-fidelity design.
 
-![Wireframes](/images/marketmate-wireframes.jpg)
+
 
 The high-fidelity prototype was built in Figma, using real QVM photography in the AR screens to ground the concept in the actual physical environment of the market.
 
-![High-fidelity prototype screens](/images/marketmate-prototype.jpg)
+![Wireframes Homepage](/images/marketmate_wf_homepage.png)
+![Wireframes AR Navigation](/images/marketmate_wf_arnav.png)
+![Wireframes Market List](/images/marketmate_wf_marketlist.png)
 
 ## Reflections
 
