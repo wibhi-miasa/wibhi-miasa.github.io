@@ -3,6 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { projects } from '../lib/projects'
+import ResearchMethods from '../components/ResearchMethods'
 
 function normalizeAssetPath(path?: string): string {
   if (!path) return ''
@@ -53,6 +54,16 @@ export default function Project() {
   }
 
   const sections = project.body ? parseSections(project.body) : []
+
+  // Precompute flip direction for each section so alternation stays correct
+  // even when a section (e.g. Research Methods) is forced to a specific side.
+  let twoColCounter = 0
+  const sectionFlips = sections.map((section) => {
+    const heading = section.heading.trim().toLowerCase()
+    if (heading === 'overview' && !section.image) return false   // single col
+    if (heading === 'research methods') { twoColCounter = 1; return false } // forced left
+    return twoColCounter++ % 2 !== 0
+  })
   const normalizedMainImage = normalizeAssetPath(project.image)
   const hasCustomMainImage = !!normalizedMainImage && !normalizedMainImage.startsWith('/images/project-')
   const heroImages = useMemo(() => {
@@ -322,40 +333,44 @@ export default function Project() {
               className={`grid grid-cols-1 gap-8 py-12 border-t border-neutral-200 ${
                 !section.image && section.heading.trim().toLowerCase() === 'overview' ? 'md:grid-cols-1' : 'md:grid-cols-2'
               } ${
-                i % 2 !== 0 ? 'md:[direction:rtl]' : ''
+                sectionFlips[i] ? 'md:[direction:rtl]' : ''
               }`}
             >
               {/* Text side */}
-              <div className={`flex flex-col justify-center ${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
+              <div className={`flex flex-col justify-center ${sectionFlips[i] ? 'md:[direction:ltr]' : ''}`}>
                 <h3 className="font-serif text-2xl text-neutral-900 mb-4">{section.heading}</h3>
-                <div className="prose prose-neutral max-w-none prose-p:text-neutral-500 prose-p:leading-relaxed prose-p:text-justify">
+                <div className="prose prose-neutral max-w-none prose-p:text-neutral-500 prose-p:leading-relaxed">
                   <ReactMarkdown>{section.text}</ReactMarkdown>
                 </div>
               </div>
 
               {/* Image side */}
               {!(section.heading.trim().toLowerCase() === 'overview' && !section.image) && (
-                <div className={`${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
-                  <div
-                    className={`rounded-lg flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 ${
-                      section.image
-                        ? 'bg-transparent'
-                        : 'bg-gradient-to-br from-neutral-100 to-neutral-200'
-                    }`}
-                  >
-                    {section.image ? (
-                      <img
-                        src={section.image}
-                        alt={section.imageAlt}
-                        className="w-full h-auto max-h-[70vh] object-contain"
-                      />
-                    ) : (
-                      <div className="text-center p-6 min-h-[220px] md:min-h-[280px] flex flex-col items-center justify-center">
-                        <p className="text-xs text-neutral-400">{section.heading}</p>
-                        <p className="text-xs text-neutral-300 mt-1">Add an image: ![alt](/images/your-image.jpg)</p>
-                      </div>
-                    )}
-                  </div>
+                <div className={`flex items-center h-full ${sectionFlips[i] ? 'md:[direction:ltr]' : ''}`}>
+                  {section.heading.trim().toLowerCase() === 'research methods' ? (
+                    <div className="w-full"><ResearchMethods /></div>
+                  ) : (
+                    <div
+                      className={`rounded-lg flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 ${
+                        section.image
+                          ? 'bg-transparent'
+                          : 'bg-gradient-to-br from-neutral-100 to-neutral-200'
+                      }`}
+                    >
+                      {section.image ? (
+                        <img
+                          src={section.image}
+                          alt={section.imageAlt}
+                          className="w-full h-auto max-h-[70vh] object-contain"
+                        />
+                      ) : (
+                        <div className="text-center p-6 min-h-[220px] md:min-h-[280px] flex flex-col items-center justify-center">
+                          <p className="text-xs text-neutral-400">{section.heading}</p>
+                          <p className="text-xs text-neutral-300 mt-1">Add an image: ![alt](/images/your-image.jpg)</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
