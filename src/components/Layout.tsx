@@ -47,12 +47,14 @@ export default function Layout() {
             >
               About
             </NavLink>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="text-sm text-neutral-500 hover:text-neutral-800 transition-colors"
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
+              }
             >
               Contact
-            </a>
+            </NavLink>
           </div>
         </nav>
       </header>
