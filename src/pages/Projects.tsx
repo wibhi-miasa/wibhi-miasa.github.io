@@ -17,14 +17,24 @@ export default function Projects() {
               to={`/project/${project.slug}`}
               className="group bg-neutral-50 border border-neutral-200 rounded-lg overflow-hidden hover:bg-neutral-100 transition-colors"
             >
-              {/* Image placeholder */}
-              <div className="aspect-[16/10] bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-4xl mb-2 opacity-20">
-                    {project.category === 'Research' ? '🔬' : '📊'}
+              {/* Image */}
+              <div className="aspect-[16/10] bg-gradient-to-br from-neutral-100 to-neutral-200 overflow-hidden">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center p-6">
+                      <div className="text-4xl mb-2 opacity-20">
+                        {project.category === 'Research' ? '🔬' : '📊'}
+                      </div>
+                      <p className="text-xs text-neutral-400">{project.title}</p>
+                    </div>
                   </div>
-                  <p className="text-xs text-neutral-400">{project.title}</p>
-                </div>
+                )}
               </div>
 
               {/* Text */}
