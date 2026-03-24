@@ -105,12 +105,4 @@ The high-fidelity prototype was built in Figma, using real QVM photography in th
 
 ## Reflections
 
-This project surfaced some genuine tensions that shaped how I think about design decisions.
-
-**Digital divide** — AR navigation inherently favours tech-comfortable users. Older visitors or those less familiar with smartphones may find the interface alienating rather than helpful. A truly inclusive solution would require a low-tech fallback.
-
-**The Matthew Effect** — A personalised recommender system risks making popular stalls even more visible while leaving smaller vendors undiscovered. Design that claims to help everyone can quietly disadvantage some.
-
-**Privacy** — Collecting dietary preferences, location data, and browsing behaviour raises real data security concerns that we acknowledged as areas for future design work.
-
-These aren't problems we fully solved — but recognising them early is part of responsible design practice.
+This project surfaced genuine tensions that shaped how I think about design decisions. Recognising these constraints early is part of responsible design practice.
