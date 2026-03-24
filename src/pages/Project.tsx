@@ -11,8 +11,8 @@ function normalizeAssetPath(path?: string): string {
 }
 
 /** Split markdown body into sections delimited by ## headings */
-function parseSections(body: string): { heading: string; text: string; image?: string; imageAlt?: string }[] {
-  const sections: { heading: string; text: string; image?: string; imageAlt?: string }[] = []
+function parseSections(body: string): { heading: string; text: string; image?: string; imageAlt?: string; images?: Array<{ url: string; alt: string }> }[] {
+  const sections: { heading: string; text: string; image?: string; imageAlt?: string; images?: Array<{ url: string; alt: string }> }[] = []
   const parts = body.split(/^## /m).filter((s) => s.trim())
 
   for (const part of parts) {
@@ -20,14 +20,21 @@ function parseSections(body: string): { heading: string; text: string; image?: s
     const heading = lines[0].trim()
     const rest = lines.slice(1).join('\n').trim()
 
-    // Extract image if present: ![alt](/path)
-    const imgMatch = rest.match(/!\[([^\]]*)\]\(([^)]+)\)/)
-    const image = imgMatch?.[2]
-    const imageAlt = imgMatch?.[1] || heading
-    // Remove image line from text
+    // Extract all images: ![alt](/path)
+    const imgMatches = [...rest.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)]
+    const images = imgMatches.map(match => ({
+      url: normalizeAssetPath(match[2]),
+      alt: match[1] || heading
+    }))
+    
+    // For backward compatibility, set image to first image
+    const image = images.length > 0 ? images[0].url : undefined
+    const imageAlt = images.length > 0 ? images[0].alt : heading
+    
+    // Remove image lines from text
     const text = rest.replace(/!\[[^\]]*\]\([^)]+\)\s*/g, '').trim()
 
-    sections.push({ heading, text, image, imageAlt })
+    sections.push({ heading, text, image, imageAlt, images })
   }
 
   return sections
@@ -239,7 +246,7 @@ export default function Project() {
                       <img
                         src={img}
                         alt={`${project.title} screen ${realIndex + 1}`}
-                        className={`max-w-[260px] sm:max-w-[290px] rounded-[18px] sm:rounded-[22px] object-cover transition-all duration-300 ${
+                        className={`max-w-[260px] sm:max-w-[290px] rounded-[18px] sm:rounded-[22px] object-contain bg-transparent transition-all duration-300 ${
                           isActive
                             ? 'w-full h-[96%] sm:h-[98%] md:h-full opacity-100'
                             : 'w-[86%] h-[80%] sm:h-[84%] md:h-[86%] opacity-70'
@@ -312,7 +319,7 @@ export default function Project() {
           {sections.map((section, i) => (
             <div
               key={i}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 py-12 border-t border-neutral-200 ${
+              className={`grid grid-cols-1 gap-8 py-12 border-t border-neutral-200 ${
                 !section.image && section.heading.trim().toLowerCase() === 'overview' ? 'md:grid-cols-1' : 'md:grid-cols-2'
               } ${
                 i % 2 !== 0 ? 'md:[direction:rtl]' : ''
@@ -329,15 +336,21 @@ export default function Project() {
               {/* Image side */}
               {!(section.heading.trim().toLowerCase() === 'overview' && !section.image) && (
                 <div className={`${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
-                  <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center overflow-hidden">
+                  <div
+                    className={`rounded-lg flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 ${
+                      section.image
+                        ? 'bg-transparent'
+                        : 'bg-gradient-to-br from-neutral-100 to-neutral-200'
+                    }`}
+                  >
                     {section.image ? (
                       <img
                         src={section.image}
                         alt={section.imageAlt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto max-h-[70vh] object-contain"
                       />
                     ) : (
-                      <div className="text-center p-6">
+                      <div className="text-center p-6 min-h-[220px] md:min-h-[280px] flex flex-col items-center justify-center">
                         <p className="text-xs text-neutral-400">{section.heading}</p>
                         <p className="text-xs text-neutral-300 mt-1">Add an image: ![alt](/images/your-image.jpg)</p>
                       </div>

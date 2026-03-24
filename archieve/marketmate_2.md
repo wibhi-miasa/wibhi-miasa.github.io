@@ -4,29 +4,21 @@ category: UX Design
 title: MarketMate
 subtitle: Helping visitors navigate and discover Queen Victoria Market through AR-powered wayfinding and a personalised recommender system.
 description: A mobile application designed to help visitors find stalls, plan personalised tours, and explore Queen Victoria Market using augmented reality navigation.
-image: /images/marketmate_homepage.png
-heroImages:
-  - /images/marketmate_homepage.png
-  - /images/marketmate_arnav.png
-  - /images/marketmate_tour.png
+image: /images/project-marketmate.jpg
 tags:
   - UX Design
   - Field Research
   - Mobile App
   - Figma
   - AR
-prototypeUrl: https://www.figma.com/proto/OfwBsPOCkLJH81ClxXtNCc/Design-Concept?page-id=2%3A2&node-id=194-463&p=f&viewport=-9059%2C314%2C0.36&t=m8Zxv58bNMC4iHKc-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=194%3A463
+prototypeUrl: https://your-figma-link-here
 ctaLabel: View Figma Prototype
-timeline: 2024
-team: 4 members
-role: UX Research & Design
-tools: Figma, FigJam
 order: 1
 ---
 
 ## Overview
 
-MarketMate is a mobile application concept developed in response to a real-world fieldwork study at Queen Victoria Market — a historic cultural landmark in Melbourne that attracts millions of visitors every year. With over 600 stalls spread across multiple sheds and outdoor sections, navigating the market is overwhelming for first-time visitors and regulars alike.
+MarketMate is a mobile application concept developed through a real-world fieldwork study at Queen Victoria Market — a historic cultural landmark in Melbourne that attracts millions of visitors every year. With over 600 stalls spread across multiple sheds and outdoor sections, the market is a beloved destination that nonetheless presents real challenges for the people who visit and work there.
 
 The project was completed as part of the Fieldwork for Design subject in my Master of Computer Science at the University of Melbourne, conducted in a team of four over two phases: an investigation phase and a design phase.
 
@@ -68,7 +60,7 @@ Through our fieldwork, a clear problem emerged: Queen Victoria Market has over 6
 > There are not many visual cues to find the different sections of the market.
 > — Participant 3, visitor
 
-![Signage observation at QVM](images\marketmate_sign1.png)
+![Signage observation at QVM](/images/marketmate-signage.jpg)
 
 ## Design Decision
 
