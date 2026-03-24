@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { projects } from '../lib/projects'
 import ResearchMethods from '../components/ResearchMethods'
 import KeyFindings from '../components/KeyFindings'
+import DesignDecision from '../components/DesignDecision'
 
 function normalizeAssetPath(path?: string): string {
   if (!path) return ''
@@ -352,6 +353,8 @@ export default function Project() {
                     <div className="w-full"><ResearchMethods /></div>
                   ) : section.heading.trim().toLowerCase() === 'key findings' ? (
                     <div className="w-full"><KeyFindings /></div>
+                  ) : section.heading.trim().toLowerCase() === 'design decision' ? (
+                    <div className="w-full"><DesignDecision /></div>
                   ) : (
                     <div
                       className={`rounded-lg flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 ${

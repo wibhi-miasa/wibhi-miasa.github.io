@@ -82,7 +82,8 @@ Users search for a stall, view its details including location, payment methods, 
 **MarketMatch — Personalised Recommender System**
 During onboarding, users set dietary preferences, interests, and available time. The app generates personalised tour itineraries — curated routes through the market based on what the user actually cares about. Users can also build their own custom journey by selecting specific destinations.
 
-![Solution overview](/images/marketmate-solution.jpg)
+![Solution overview 1](\images\marketmate_arnav.png)
+![Solution overview 2](\images\marketmate_tour.png)
 
 ## Design Process
 
