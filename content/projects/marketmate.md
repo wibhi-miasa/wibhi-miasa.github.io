@@ -44,13 +44,7 @@ We used a mixed-methods approach, combining two complementary fieldwork techniqu
 
 ## Key Findings
 
-Thematic analysis surfaced four areas of challenge across all participant types.
-
-**Navigation** was the most critical issue. Half of all participants (4 out of 8) reported difficulty finding specific stalls. Signage is sparse, poorly placed, and mounted too high to notice at eye level. Compounding the problem, stall positions rotate weekly — meaning even frequent visitors like P8, who shops there three times a week, still struggle to locate unfamiliar stalls.
-
-**Shopping experience** revealed unmet needs around product information — particularly dietary filters (halal, gluten-free, vegan) and product provenance. Visitors wanted to know where produce came from and what was in season, but had no way to find out.
-
-**Payment** friction emerged as a secondary pain point: ATMs are poorly signed, leading visitors to default to card payments and unknowingly pay surcharges.
+Thematic analysis surfaced four areas of challenge across all participant types. Navigation emerged as the most critical — compounded by weekly stall rotations that disorient even regular visitors. Shopping experience, payment friction, and purpose of visit rounded out the key themes, each pointing toward the same gap: visitors have no reliable way to find, plan, or discover at Queen Victoria Market.
 
 ![Affinity diagram — navigation pain points](/images/marketmate-affinity.jpg)
 

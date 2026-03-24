@@ -4,6 +4,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { projects } from '../lib/projects'
 import ResearchMethods from '../components/ResearchMethods'
+import KeyFindings from '../components/KeyFindings'
 
 function normalizeAssetPath(path?: string): string {
   if (!path) return ''
@@ -349,6 +350,8 @@ export default function Project() {
                 <div className={`flex items-center h-full ${sectionFlips[i] ? 'md:[direction:ltr]' : ''}`}>
                   {section.heading.trim().toLowerCase() === 'research methods' ? (
                     <div className="w-full"><ResearchMethods /></div>
+                  ) : section.heading.trim().toLowerCase() === 'key findings' ? (
+                    <div className="w-full"><KeyFindings /></div>
                   ) : (
                     <div
                       className={`rounded-lg flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 ${
