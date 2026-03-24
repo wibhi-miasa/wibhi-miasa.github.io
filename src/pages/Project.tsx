@@ -6,6 +6,7 @@ import { projects } from '../lib/projects'
 import ResearchMethods from '../components/ResearchMethods'
 import KeyFindings from '../components/KeyFindings'
 import DesignDecision from '../components/DesignDecision'
+import SolutionImages from '../components/SolutionImages'
 
 function normalizeAssetPath(path?: string): string {
   if (!path) return ''
@@ -355,6 +356,8 @@ export default function Project() {
                     <div className="w-full"><KeyFindings /></div>
                   ) : section.heading.trim().toLowerCase() === 'design decision' ? (
                     <div className="w-full"><DesignDecision /></div>
+                  ) : section.heading.trim().toLowerCase() === 'solution' && section.images && section.images.length >= 2 ? (
+                    <div className="w-full"><SolutionImages images={section.images} /></div>
                   ) : (
                     <div
                       className={`rounded-lg flex items-center justify-center overflow-hidden p-3 sm:p-4 md:p-6 ${

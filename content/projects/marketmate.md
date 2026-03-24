@@ -77,13 +77,17 @@ The personalised recommender system was added to address the secondary problem: 
 MarketMate is structured around two core features:
 
 **MarketAR — AR Guidance and Indoor Navigation**
-Users search for a stall, view its details including location, payment methods, and estimated walk time, then launch AR navigation. The camera screen overlays a directional arrow guide onto the real market environment, guiding the user step by step to their destination.
+- Real-time directional arrow overlaid onto the physical market environment
+- Stall details including location, payment methods, and estimated walk time
+- Supports rotating stall layouts with up-to-date positioning
 
 **MarketMatch — Personalised Recommender System**
-During onboarding, users set dietary preferences, interests, and available time. The app generates personalised tour itineraries — curated routes through the market based on what the user actually cares about. Users can also build their own custom journey by selecting specific destinations.
+- Set dietary preferences, interests, and available time during onboarding
+- Browse curated tour itineraries or build a custom journey
+- Optimal route calculated across selected destinations
 
-![Solution overview 1](\images\marketmate_arnav.png)
-![Solution overview 2](\images\marketmate_tour.png)
+![MarketAR — AR Navigation](/images/marketmate_arnav.png)
+![MarketMatch — Personalised Tour](/images/marketmate_tour.png)
 
 ## Design Process
 
