@@ -12,7 +12,7 @@ tags:
   - Figma
 prototypeUrl: https://your-figma-link-here
 ctaLabel: View Figma Prototype
-order: 1
+order: 5
 ---
 
 ## Overview

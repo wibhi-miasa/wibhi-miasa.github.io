@@ -3,6 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { projects } from '../lib/projects'
+import { personalInfo } from '../data/portfolio'
 import ResearchMethods from '../components/ResearchMethods'
 import KeyFindings from '../components/KeyFindings'
 import DesignDecision from '../components/DesignDecision'
@@ -54,11 +55,16 @@ export default function Project() {
   const [hasInteracted, setHasInteracted] = useState(false)
   const [autoAdvanceCount, setAutoAdvanceCount] = useState(0)
 
+  useEffect(() => {
+    if (project) document.title = `${project.title} — ${personalInfo.name}`
+  }, [project])
+
   if (!project) {
     return <Navigate to="/" replace />
   }
 
   const sections = project.body ? parseSections(project.body) : []
+  const isMarketMate = project.slug === 'marketmate-qvm-navigation'
 
   // Precompute flip direction for each section so alternation stays correct
   // even when a section (e.g. Research Methods) is forced to a specific side.
@@ -352,17 +358,17 @@ export default function Project() {
               {/* Image side */}
               {!(section.heading.trim().toLowerCase() === 'overview' && !section.image) && (
                 <div className={`flex items-center h-full ${sectionFlips[i] ? 'md:[direction:ltr]' : ''}`}>
-                  {section.heading.trim().toLowerCase() === 'research methods' ? (
+                  {section.heading.trim().toLowerCase() === 'research methods' && isMarketMate ? (
                     <div className="w-full"><ResearchMethods /></div>
-                  ) : section.heading.trim().toLowerCase() === 'key findings' ? (
+                  ) : section.heading.trim().toLowerCase() === 'key findings' && isMarketMate ? (
                     <div className="w-full"><KeyFindings /></div>
-                  ) : section.heading.trim().toLowerCase() === 'design decision' ? (
+                  ) : section.heading.trim().toLowerCase() === 'design decision' && isMarketMate ? (
                     <div className="w-full"><DesignDecision /></div>
                   ) : section.heading.trim().toLowerCase() === 'solution' && section.images && section.images.length >= 2 ? (
                     <div className="w-full"><SolutionImages images={section.images} /></div>
                   ) : section.heading.trim().toLowerCase() === 'design process' && section.images && section.images.length >= 1 ? (
                     <div className="w-full"><ImageCarousel images={section.images} /></div>
-                  ) : section.heading.trim().toLowerCase() === 'reflections' ? (
+                  ) : section.heading.trim().toLowerCase() === 'reflections' && isMarketMate ? (
                     <div className="w-full"><Reflections /></div>
                   ) : (
                     <div

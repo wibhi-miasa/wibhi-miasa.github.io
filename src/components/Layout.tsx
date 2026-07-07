@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { personalInfo } from '../data/portfolio'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -11,6 +11,17 @@ function ScrollToTop() {
 }
 
 export default function Layout() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation()
+  const onProjectDetail = location.pathname.startsWith('/project/')
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [location.pathname])
+
+  const navLinkClass = (isActive: boolean) =>
+    `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
+
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
@@ -21,42 +32,65 @@ export default function Layout() {
           <Link to="/" className="text-lg font-medium tracking-tight text-neutral-900 hover:text-neutral-600 transition-colors">
             {personalInfo.name}
           </Link>
-          <div className="flex items-center gap-8">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
-              }
-            >
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            <NavLink to="/" end className={({ isActive }) => navLinkClass(isActive)}>
               Home
             </NavLink>
             <NavLink
               to="/projects"
-              className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
-              }
+              className={({ isActive }) => navLinkClass(isActive || onProjectDetail)}
             >
               Projects
             </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
-              }
-            >
+            <NavLink to="/about" className={({ isActive }) => navLinkClass(isActive)}>
               About
             </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `text-sm transition-colors ${isActive ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`
-              }
-            >
+            <NavLink to="/contact" className={({ isActive }) => navLinkClass(isActive)}>
               Contact
             </NavLink>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="md:hidden p-2 text-neutral-700 hover:text-neutral-900 transition-colors"
+          >
+            {mobileMenuOpen ? (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
+          </button>
         </nav>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-5">
+            <NavLink to="/" end className={({ isActive }) => navLinkClass(isActive)}>
+              Home
+            </NavLink>
+            <NavLink
+              to="/projects"
+              className={({ isActive }) => navLinkClass(isActive || onProjectDetail)}
+            >
+              Projects
+            </NavLink>
+            <NavLink to="/about" className={({ isActive }) => navLinkClass(isActive)}>
+              About
+            </NavLink>
+            <NavLink to="/contact" className={({ isActive }) => navLinkClass(isActive)}>
+              Contact
+            </NavLink>
+          </div>
+        )}
       </header>
 
       {/* Main content */}

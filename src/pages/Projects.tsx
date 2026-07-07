@@ -1,7 +1,13 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { projects } from '../lib/projects'
+import { personalInfo } from '../data/portfolio'
 
 export default function Projects() {
+  useEffect(() => {
+    document.title = `Projects — ${personalInfo.name}`
+  }, [])
+
   return (
     <>
       <section className="max-w-6xl mx-auto px-6 pt-20 pb-16">

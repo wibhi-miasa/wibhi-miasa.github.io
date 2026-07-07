@@ -1,8 +1,13 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { personalInfo, skills, experience } from '../data/portfolio'
 import { projects } from '../lib/projects'
 
 export default function About() {
+  useEffect(() => {
+    document.title = `About — ${personalInfo.name}`
+  }, [])
+
   return (
     <>
       {/* Hero */}

@@ -1,9 +1,14 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { personalInfo } from '../data/portfolio'
 import { projects } from '../lib/projects'
 import ProjectCard from '../components/ProjectCard'
 
 export default function Home() {
+  useEffect(() => {
+    document.title = `${personalInfo.name} — Portfolio`
+  }, [])
+
   return (
     <>
       {/* Hero */}

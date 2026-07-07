@@ -1,6 +1,11 @@
+import { useEffect } from 'react'
 import { personalInfo } from '../data/portfolio'
 
 export default function Contact() {
+  useEffect(() => {
+    document.title = `Contact — ${personalInfo.name}`
+  }, [])
+
   return (
     <section className="max-w-6xl mx-auto px-6 pt-20 pb-20">
       <h1 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-4">Contact</h1>
